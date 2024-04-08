@@ -7,8 +7,10 @@
     <h2>{{category}}</h2>
     {% for task in tasks %}
       <table>
-          <td><a href="">0</a></td>
-          <td><a href="{% url 'description' task_id %}">{{task.title}}</a></td>
+          <td><a href="{% url 'task_del' task.id %}">0</a></td>
+          <h4>{{task.title}}</h4>
+          <h6>{{task.description}}</h6>
+          <h6>{{task.task_date}}</h6>
       </table>
     {% endfor %}
 {% endblock %}

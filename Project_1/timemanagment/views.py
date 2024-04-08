@@ -1,4 +1,4 @@
-from django.shortcuts import render
+from django.shortcuts import render, redirect
 from .models import *
 
 def index(request):
@@ -21,9 +21,9 @@ def tasks (request, c_id):
     }
     return render(request, 'timemanagment/tasks.html', context)
 
-def description(request, task_id):
+def task_del(request, task_id):
     task = Tasks.objects.get(pk=task_id)
-    context = {
-        'task': task,
-    }
-    return render(request, 'timemanagment/description.html', context)
+    task.is_done = True
+    task.save()
+    category = task.category.id
+    return redirect(tasks, c_id=category)
