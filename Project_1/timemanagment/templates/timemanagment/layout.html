@@ -15,28 +15,28 @@
 </head>
 <body>
     <main>
-        <header class="d-flex flex-wrap align-items-center justify-content-center justify-content-md-between py-3 mb-4 border-bottom">
-      <div class="col-md-3 text-end">
-          {% if user.is_authenticated %}
-                <a href="{% url 'users:profile' %}" class="btn btn-outline-primary me-2" role="button">{{user.username}}</a>
-                <form style="display:inline-block" method="post" action="{% url 'users:logout' %}">{% csrf_token %}<button type="submit" class="btn btn-outline-primary me-2">Выйти</button></form>
-          {% else %}
-              <a href="{% url 'users:login' %}" class="btn btn-outline-primary me-2" role="button">Войти</a>
-              <a href="{% url 'users:register' %}" class="btn btn-outline-primary me-2" role="button">Регистрация</a>
-          {% endif %}
-      </div>
-    </header>
+        <header>
+             <img src="img/header.png">
+          <div class="wrapper site-header__wrapper">
+            {% if user.is_authenticated %}
+                  <a href="{% url 'users:profile' %}" class="btn btn-outline-primary me-2" role="button">{{user.username}}</a>
+                  <form style="display:inline-block" method="post" action="{% url 'users:logout' %}">{% csrf_token %}<button type="submit" class="btn btn-outline-primary me-2">Выйти</button></form>
+            {% else %}
+                <a href="{% url 'users:login' %}" class="btn btn-outline-primary me-2" role="button">Войти</a>
+                <a href="{% url 'users:register' %}" class="btn btn-outline-primary me-2" role="button">Регистрация</a>
+            {% endif %}
+          </div>
+        </header>
         {% block body %}
         {% endblock %}
-			</ul>
+        </ul>
 			<div class="clear"></div>
 		</div>
         <footer>
             <ul class="nav col-12 col-md-auto mb-2 justify-content-center mb-md-0">
-             <li><a href="{% url 'home' %}" class="nav-link px-2"><button type="button" class="btn btn-primary btn-circle"><i class="bi bi-calendar-event"></i></button></a></li>
-             <li><a href="{% url 'tasks' %}" class="nav-link px-2"><button type="button" class="btn btn-primary btn-circle"><i class="bi bi-list-task"></i></button></a></li>
+               <li><a href="{% url 'home' %}" class="nav-link px-2"><button type="button" class="btn btn-primary btn-circle"><i class="bi bi-calendar-event"></i></button></a></li>
+               <li><a href="{% url 'tasks' %}" class="nav-link px-2"><button type="button" class="btn btn-primary btn-circle"><i class="bi bi-list-task"></i></button></a></li>
             </ul>
-
         </footer>
     </main>
 </body>
