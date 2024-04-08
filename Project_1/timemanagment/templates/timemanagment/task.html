@@ -4,5 +4,14 @@
 
 {% block body %}
     <h1>tasks</h1>
-    <p>numbers</p>
+    {% for category in categories %}
+       <ul>
+           <li><a href="">{{category.title}}</a></li>
+       </ul>
+    {% endfor %}
+    {% for category in categories %}
+       <ul>
+           <li><a href="{% url 'tasks' category.title %}">{{category.title}}</a></li>
+       </ul>
+    {% endfor %}
 {% endblock %}
