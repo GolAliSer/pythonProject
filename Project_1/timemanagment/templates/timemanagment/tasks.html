@@ -1,10 +1,14 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <title>Title</title>
-</head>
-<body>
+{% extends 'timemanagment/layout.html' %}
 
-</body>
-</html>
+{% block title %}Задачи{% endblock %}
+
+{% block body %}
+
+    <h2>{{category}}</h2>
+    {% for task in tasks %}
+      <table>
+          <td><a href="">0</a></td>
+          <td><a href="{% url 'description' task_id %}">{{task.title}}</a></td>
+      </table>
+    {% endfor %}
+{% endblock %}

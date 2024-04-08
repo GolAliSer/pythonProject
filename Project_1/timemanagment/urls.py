@@ -1,8 +1,9 @@
 from django.urls import path
 from . import views
-from .views import home
 
 urlpatterns = [
     path('', views.index, name='home'),
-    path('task/', views.home, name='tasks')
+    path('task/', views.home, name='task'),
+    path('category/<int:c_id>', views.tasks, name='tasks'),
+    path('category/task/<int:task_id>', views.description, name='description'),
 ]
