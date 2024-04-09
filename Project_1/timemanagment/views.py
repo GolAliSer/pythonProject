@@ -1,6 +1,6 @@
 from django.shortcuts import render, redirect
-from .models import *
-from forms import *
+from .models import Category, Tasks
+from .forms import CategoryForm, TaskForm
 
 def index(request):
     return render(request, 'timemanagment/main.html')
@@ -41,3 +41,23 @@ def add_category(request):
             'form': form
         }
         return render(request, 'timemanagment/add_category.html', context)
+
+def add_task(request, category):
+    if request.method == 'POST':
+        form = TaskForm(request.POST)
+        if form.is_valid():
+            post = form.save(commit=False)
+            post.category = Category.objects.get(title=category)
+            post.save()
+        return redirect(tasks, post.category.id)
+    else:
+        form = TaskForm
+        context = {
+            'form': form
+        }
+        return render(request, 'timemanagment/add_task.html', context)
+
+def category_del(request, c_id):
+    category = Category.objects.get(pk=c_id)
+    category.delete()
+    return redirect(home)

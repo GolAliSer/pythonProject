@@ -6,8 +6,9 @@
     <h1>tasks</h1>
     <button><a href="{% url 'add_c' %}">Добавить категорию</a></button>
     {% for category in categories %}
-       <ul>
-           <li><a href="{% url 'tasks' category.id %}">{{category.title}}</a></li>
-       </ul>
+       <table>
+           <td><a href="{% url 'tasks' category.id %}">{{category.title}}</a></td>
+           <td><a href="{% url 'c_del' category.id %}">Удалить</a> </td>
+       </table>
     {% endfor %}
 {% endblock %}
