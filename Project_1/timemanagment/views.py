@@ -1,5 +1,6 @@
 from django.shortcuts import render, redirect
 from .models import *
+from forms import *
 
 def index(request):
     return render(request, 'timemanagment/main.html')
@@ -27,3 +28,16 @@ def task_del(request, task_id):
     task.save()
     category = task.category.id
     return redirect(tasks, c_id=category)
+
+def add_category(request):
+    if request.method == 'POST':
+        form = CategoryForm(request.POST)
+        if form.is_valid():
+            form.save()
+        return redirect(home)
+    else:
+        form = CategoryForm
+        context = {
+            'form': form
+        }
+        return render(request, 'timemanagment/add_category.html', context)

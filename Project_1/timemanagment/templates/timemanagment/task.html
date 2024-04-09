@@ -4,6 +4,7 @@
 
 {% block body %}
     <h1>tasks</h1>
+    <button><a href="{% url 'add_c' %}">Добавить категорию</a></button>
     {% for category in categories %}
        <ul>
            <li><a href="{% url 'tasks' category.id %}">{{category.title}}</a></li>
