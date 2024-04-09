@@ -5,7 +5,7 @@
 {% block body %}
 
     <h2>Выполненное</h2>
-
+    <a href="{% url 'done_tasks_del' %}">Удалить все</a>
     {% for task in tasks %}
       <table>
         <td><a href="{% url 'not_done' task.id %}">V</a> </td>

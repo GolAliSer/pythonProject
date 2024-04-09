@@ -74,3 +74,8 @@ def not_done(request, task_id):
     task.is_done = False
     task.save()
     return redirect(done_tasks)
+
+def done_del(requeste):
+    tasks = Tasks.objects.filter(is_done=True)
+    tasks.delete()
+    return redirect(done_tasks)
