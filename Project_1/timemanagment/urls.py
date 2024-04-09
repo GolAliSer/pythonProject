@@ -9,5 +9,7 @@ urlpatterns = [
     path('add_category/', views.add_category, name='add_c'),
     path('category/<int:c_id>/del', views.category_del, name='c_del'),
     path('category/<str:category>/add_task', views.add_task, name='add_t'),
+    path('done/<int:task_id>/not_done', views.not_done, name='not_done'),
+    path('done_tasks/', views.done_tasks, name='done_tasks'),
 
 ]

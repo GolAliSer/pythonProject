@@ -61,3 +61,16 @@ def category_del(request, c_id):
     category = Category.objects.get(pk=c_id)
     category.delete()
     return redirect(home)
+
+def done_tasks(requeste):
+    tasks = Tasks.objects.filter(is_done=True)
+    context = {
+        'tasks': tasks
+    }
+    return render(requeste, 'timemanagment/done_tasks.html', context)
+
+def not_done(request, task_id):
+    task = Tasks.objects.get(pk=task_id)
+    task.is_done = False
+    task.save()
+    return redirect(done_tasks)

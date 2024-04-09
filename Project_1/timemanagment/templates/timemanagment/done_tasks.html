@@ -1,0 +1,16 @@
+{% extends 'timemanagment/layout.html' %}
+
+{% block title %}Задачи{% endblock %}
+
+{% block body %}
+
+    <h2>Выполненное</h2>
+
+    {% for task in tasks %}
+      <table>
+        <td><a href="{% url 'not_done' task.id %}">V</a> </td>
+        <td>{{task.title}}</td>
+      </table>
+
+    {% endfor %}
+{% endblock %}
