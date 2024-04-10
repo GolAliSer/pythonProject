@@ -17,6 +17,11 @@ header{
 	height: 70px;
 }
 
+img {
+    align-items: center;
+	height: 70px;
+}
+
 .site-header__wrapper {
   display: flex;
   justify-content: space-between;
