@@ -9,7 +9,6 @@ class Category(models.Model):
         verbose_name_plural = "Категории"
 
 class Tasks(models.Model):
-
     title = models.CharField(max_length=100,  verbose_name="Задача")
     description = models.TextField(blank=True, null=True, verbose_name="Описание")
     task_date = models.DateTimeField(auto_now=True, verbose_name="Дата создания")
